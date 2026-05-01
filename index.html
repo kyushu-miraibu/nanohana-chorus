@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九州菜の花少年少女合唱団</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --yellow:#F5C518;--yellow-light:#FFF9C4;--yellow-dark:#C8960C;
+      --green:#2E7D32;--green-light:#4CAF50;
+      --dark:#1C1C1C;--text:#333;--text-light:#666;
+      --white:#fff;--bg-light:#FFFDE7;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+
+    /* ========== NAV ========== */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
+      box-shadow:0 2px 24px rgba(0,0,0,.08);
+      height:68px;padding:0 2.5rem;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+    .nav-logo-icon{
+      width:42px;height:42px;background:var(--yellow);
+      border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+      box-shadow:0 2px 8px rgba(245,197,24,.5);
+    }
+    .nav-logo-text{font-size:.85rem;font-weight:700;color:var(--dark);line-height:1.3}
+    .nav-links{display:flex;gap:1.8rem;list-style:none}
+    .nav-links a{text-decoration:none;color:var(--text);font-size:.88rem;font-weight:500;transition:color .25s;white-space:nowrap}
+    .nav-links a:hover{color:var(--yellow-dark)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .hamburger span{width:24px;height:2px;background:var(--dark);border-radius:2px;transition:.3s}
+
+    /* ========== HERO ========== */
+    #hero{
+      height:100vh;min-height:600px;
+      background:linear-gradient(135deg,#FFFDE7 0%,#FFF176 40%,#AED581 100%);
+      display:flex;align-items:center;justify-content:center;text-align:center;
+      position:relative;overflow:hidden;
+    }
+    .hero-dots{
+      position:absolute;inset:0;opacity:.18;
+      background-image:radial-gradient(circle,#F5C518 2px,transparent 2px);
+      background-size:40px 40px;
+    }
+    .hero-wave{
+      position:absolute;bottom:-2px;left:0;right:0;
+    }
+    .hero-content{position:relative;z-index:1;max-width:780px;padding:2rem;margin-top:68px}
+    .hero-badge{
+      display:inline-block;background:rgba(255,255,255,.85);
+      color:var(--green);font-size:.82rem;font-weight:700;
+      padding:.35rem 1.2rem;border-radius:20px;margin-bottom:1.5rem;letter-spacing:.08em;
+    }
+    .hero-title{
+      font-family:'Noto Serif JP',serif;font-size:clamp(2rem,5vw,3.6rem);
+      font-weight:700;color:var(--dark);line-height:1.25;margin-bottom:1rem;
+    }
+    .hero-title span{color:var(--green)}
+    .hero-sub{font-size:clamp(.95rem,2vw,1.2rem);color:#444;margin-bottom:2.5rem;font-weight:300;line-height:1.7}
+    .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn{
+      display:inline-block;padding:.8rem 2rem;border-radius:50px;
+      text-decoration:none;font-weight:700;font-size:.9rem;
+      transition:all .3s;cursor:pointer;border:none;letter-spacing:.03em;
+    }
+    .btn-dark{background:var(--dark);color:#fff}
+    .btn-dark:hover{background:var(--green);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.2)}
+    .btn-outline{background:transparent;color:var(--dark);border:2px solid var(--dark)}
+    .btn-outline:hover{background:var(--dark);color:#fff;transform:translateY(-3px)}
+    .btn-yellow{background:var(--yellow);color:var(--dark)}
+    .btn-yellow:hover{background:var(--yellow-dark);transform:translateY(-3px);box-shadow:0 10px 24px rgba(200,150,12,.35)}
+    .hero-scroll{
+      position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+      display:flex;flex-direction:column;align-items:center;gap:.3rem;
+      color:#666;font-size:.75rem;letter-spacing:.1em;
+      animation:bobble 2s ease-in-out infinite;
+    }
+    @keyframes bobble{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+    /* ========== SECTION BASE ========== */
+    .section{padding:5.5rem 2rem}
+    .section-inner{max-width:1100px;margin:0 auto}
+    .section-head{text-align:center;margin-bottom:3.5rem}
+    .section-tag{
+      display:inline-block;background:var(--yellow-light);color:var(--green);
+      font-size:.75rem;font-weight:700;padding:.3rem 1rem;border-radius:20px;
+      margin-bottom:.8rem;letter-spacing:.12em;
+    }
+    .section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:var(--dark);margin-bottom:.8rem}
+    .section-desc{color:var(--text-light);max-width:580px;margin:0 auto;line-height:1.85;font-size:.93rem}
+
+    /* ========== ABOUT ========== */
+    #about{background:var(--white)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .about-text h3{font-family:'Noto Serif JP',serif;font-size:1.4rem;margin-bottom:1rem;color:var(--dark)}
+    .about-text p{color:var(--text-light);line-height:1.9;margin-bottom:1rem;font-size:.93rem}
+    .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+    .stat-card{
+      background:var(--bg-light);border-radius:18px;padding:1.5rem 1rem;
+      text-align:center;border:2px solid var(--yellow-light);
+    }
+    .stat-num{font-size:2.2rem;font-weight:900;color:var(--yellow-dark);line-height:1}
+    .stat-label{font-size:.75rem;color:var(--text-light);margin-top:.4rem}
+
+    /* ========== ACTIVITIES ========== */
+    #activities{background:var(--bg-light)}
+    .act-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem}
+    .act-card{
+      background:var(--white);border-radius:22px;padding:2rem 1.5rem;
+      text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);
+      transition:transform .3s,box-shadow .3s;
+    }
+    .act-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(0,0,0,.1)}
+    .act-icon{width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin:0 auto 1rem}
+    .act-card h3{font-weight:700;margin-bottom:.5rem;font-size:.97rem}
+    .act-card p{font-size:.83rem;color:var(--text-light);line-height:1.75}
+
+    /* ========== VIDEOS ========== */
+    #videos{background:var(--dark)}
+    #videos .section-tag{background:rgba(245,197,24,.15);color:var(--yellow)}
+    #videos .section-title{color:#fff}
+    #videos .section-desc{color:rgba(255,255,255,.55)}
+    .vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem}
+    .vid-card{border-radius:18px;overflow:hidden;background:#252525;transition:transform .3s;text-decoration:none;display:block}
+    .vid-card:hover{transform:translateY(-5px)}
+    .vid-card:hover .vid-play{transform:translate(-50%,-50%) scale(1.12)}
+    .vid-thumb{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+    .vid-thumb img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+    .vid-play{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:56px;height:56px;border-radius:50%;
+      background:rgba(255,0,0,.85);display:flex;align-items:center;justify-content:center;
+      transition:transform .25s;box-shadow:0 4px 16px rgba(0,0,0,.5);
+    }
+    .vid-play svg{margin-left:4px}
+    .vid-info{padding:1rem 1.2rem 1.3rem}
+    .vid-info h3{color:#fff;font-size:.93rem;font-weight:700;margin-bottom:.3rem}
+    .vid-info p{color:rgba(255,255,255,.45);font-size:.78rem;line-height:1.5}
+    .vid-tag{
+      display:inline-block;font-size:.7rem;font-weight:700;
+      padding:.2rem .7rem;border-radius:10px;margin-bottom:.4rem;
+      background:rgba(245,197,24,.2);color:var(--yellow);
+    }
+
+    /* ========== GALLERY ========== */
+    #gallery{background:var(--white)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem}
+    .album-card{
+      border-radius:18px;overflow:hidden;position:relative;
+      aspect-ratio:1;cursor:pointer;text-decoration:none;display:block;
+    }
+    .album-bg{
+      width:100%;height:100%;
+      display:flex;align-items:flex-start;justify-content:flex-end;
+      padding:1rem;transition:transform .4s;
+    }
+    .album-card:hover .album-bg{transform:scale(1.06)}
+    .album-emoji{font-size:2.5rem;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
+    .album-overlay{
+      position:absolute;bottom:0;left:0;right:0;
+      background:linear-gradient(transparent,rgba(0,0,0,.72));
+      padding:2rem 1rem 1rem;
+    }
+    .album-title{color:#fff;font-weight:700;font-size:.83rem;line-height:1.4}
+    .album-count{color:rgba(255,255,255,.65);font-size:.73rem;margin-top:.2rem}
+    .gallery-more{text-align:center;margin-top:2.2rem}
+
+    /* ========== TIMELINE ========== */
+    #news{background:var(--bg-light)}
+    .timeline{max-width:760px;margin:0 auto;position:relative;padding-left:0}
+    .timeline::before{content:'';position:absolute;left:18px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--yellow),var(--green-light))}
+    .tl-item{padding:0 0 2.2rem 56px;position:relative}
+    .tl-dot{
+      position:absolute;left:9px;top:4px;
+      width:20px;height:20px;border-radius:50%;
+      background:var(--yellow);border:3px solid #fff;
+      box-shadow:0 0 0 3px var(--yellow);
+    }
+    .tl-date{font-size:.78rem;color:var(--green);font-weight:700;margin-bottom:.25rem;letter-spacing:.05em}
+    .tl-title{font-weight:700;font-size:.97rem;margin-bottom:.3rem}
+    .tl-desc{font-size:.84rem;color:var(--text-light);line-height:1.75}
+
+    /* ========== JOIN ========== */
+    #join{background:linear-gradient(135deg,#FFF176 0%,#A5D6A7 100%);text-align:center}
+    .join-box{max-width:620px;margin:0 auto}
+    .join-box > p{font-size:.95rem;color:#333;line-height:1.85;margin-bottom:2rem}
+    .join-table{
+      background:#fff;border-radius:22px;padding:1.8rem 2rem;
+      margin-bottom:2rem;text-align:left;
+      box-shadow:0 4px 20px rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+    .join-table table{width:100%;border-collapse:collapse;font-size:.88rem;table-layout:fixed}
+    .join-table tr{border-bottom:1px solid #f0f0f0}
+    .join-table tr:last-child{border-bottom:none}
+    .join-table td{padding:.7rem .4rem;word-break:break-word}
+    .join-table td:first-child{font-weight:700;color:#555;width:90px;white-space:nowrap}
+    @media(max-width:480px){
+      .join-table{padding:1.2rem 1rem}
+      .join-table td:first-child{white-space:normal;width:75px}
+    }
+
+    /* ========== FOOTER ========== */
+    footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:2.8rem 2rem}
+    .footer-logo{font-family:'Noto Serif JP',serif;font-size:1.05rem;color:#fff;font-weight:700;margin-bottom:.5rem}
+    .footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap}
+    .footer-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.8rem;transition:color .2s}
+    .footer-links a:hover{color:var(--yellow)}
+    footer p{font-size:.78rem}
+
+    /* ========== RESPONSIVE ========== */
+    @media(max-width:900px){
+      .about-grid{grid-template-columns:1fr;gap:2.5rem}
+    }
+    @media(max-width:680px){
+      nav{padding:0 1.2rem}
+      .nav-links{
+        display:none;flex-direction:column;position:absolute;
+        top:68px;left:0;right:0;background:#fff;
+        padding:1rem 2rem 1.5rem;box-shadow:0 8px 24px rgba(0,0,0,.1);
+        gap:1rem;
+      }
+      .nav-links.open{display:flex}
+      .hamburger{display:flex}
+      .section{padding:4rem 1.2rem}
+      .vid-grid{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+      .timeline::before{left:10px}
+      .tl-item{padding-left:38px}
+      .tl-dot{left:1px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon" style="background:#2E7D32">
+      <svg viewBox="0 0 32 32" width="26" height="26" xmlns="http://www.w3.org/2000/svg">
+        <!-- 菜の花：4枚の黄色い花びら（十字形）-->
+        <ellipse cx="16" cy="7"  rx="4.5" ry="7"   fill="#FFE033"/>
+        <ellipse cx="25" cy="16" rx="7"   ry="4.5" fill="#FFE033"/>
+        <ellipse cx="16" cy="25" rx="4.5" ry="7"   fill="#FFE033"/>
+        <ellipse cx="7"  cy="16" rx="7"   ry="4.5" fill="#FFE033"/>
+        <!-- 緑の花心 -->
+        <circle cx="16" cy="16" r="5.5" fill="#1B5E20"/>
+        <!-- 雄しべ（小さな黄色い丸）-->
+        <circle cx="16" cy="11.8" r="1.6" fill="#FFE033"/>
+        <circle cx="20.2" cy="16" r="1.6" fill="#FFE033"/>
+        <circle cx="16" cy="20.2" r="1.6" fill="#FFE033"/>
+        <circle cx="11.8" cy="16" r="1.6" fill="#FFE033"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">九州菜の花<br>少年少女合唱団</div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">団について</a></li>
+    <li><a href="#activities">活動内容</a></li>
+    <li><a href="#videos">活動動画</a></li>
+    <li><a href="#gallery">フォト</a></li>
+    <li><a href="#news">活動記録</a></li>
+    <li><a href="#join">入団案内</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section id="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-content">
+    <span class="hero-badge">🌼 九州から世界へ — 平和と希望の歌声 🌼</span>
+    <h1 class="hero-title">九州菜の花<br><span>少年少女合唱団</span></h1>
+    <p class="hero-sub">歌に夢を乗せて、仲間と共に歌声を届ける。<br>菜の花のように明るく、力強く。</p>
+    <div class="hero-btns">
+      <a href="#videos" class="btn btn-dark">▶ 活動動画を見る</a>
+      <a href="#join" class="btn btn-outline">入団のご案内</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <svg width="18" height="18" viewBox="0 0 18 18"><path d="M4 7l5 5 5-5" stroke="#777" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#ffffff"/>
+  </svg>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">ABOUT</span>
+      <h2 class="section-title">団について</h2>
+      <p class="section-desc">福岡都市圏（福岡総県・博多総県・筑紫総県）の小学3年生〜小学6年生が、一丸となって歌声を響かせます</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h3>歌で、心で、世界をつなぐ</h3>
+        <p>九州菜の花少年少女合唱団は、福岡都市圏（福岡総県・博多総県・筑紫総県）の小学3年生〜小学6年生が集う合唱団です。毎月の練習会を通じて歌唱技術と表現力を磨き、地域の大型イベントや記念ホールに出演しています。</p>
+        <p>1978年10月28日の結成以来、PayPayドーム福岡での「Asia Peace Festa 2025」出演、九州池田講堂への出演、そして韓国から来られた方々との国際交流など、感動の舞台を重ねてきました。</p>
+        <p>菜の花のように明るく輝き、「BeBrave!」「未来の地図」「平和のうた」など、平和と希望を込めた歌声を届け続けています。</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">1978</div>
+          <div class="stat-label">結成年</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">25+</div>
+          <div class="stat-label">フォトアルバム</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">58</div>
+          <div class="stat-label">動画コンテンツ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">大型舞台出演</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ACTIVITIES ========== -->
+<section id="activities" class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">ACTIVITIES</span>
+      <h2 class="section-title">活動内容</h2>
+      <p class="section-desc">練習から大舞台まで、充実した一年を過ごします</p>
+    </div>
+    <div class="act-grid">
+      <div class="act-card">
+        <div class="act-icon" style="background:#FFF9C4">🎵</div>
+        <h3>定例練習会</h3>
+        <p>月1〜2回の定期練習で、歌唱技術と表現力を磨きます。仲間と一緒に音楽の喜びを分かち合う場です。</p>
+      </div>
+      <div class="act-card">
+        <div class="act-icon" style="background:#E8F5E9">🎤</div>
+        <h3>大型イベント出演</h3>
+        <p>PayPayドーム・九州池田講堂など九州の大舞台で歌声を披露。本番の感動は何物にも代えられません。</p>
+      </div>
+      <div class="act-card">
+        <div class="act-icon" style="background:#FFF3E0">🌸</div>
+        <h3>入卒団式・発表会</h3>
+        <p>年1回の入卒団式、師弟発表会など、節目の行事を大切にしています。成長を仲間と分かち合います。</p>
+      </div>
+      <div class="act-card">
+        <div class="act-icon" style="background:#E3F2FD">✈️</div>
+        <h3>国際交流</h3>
+        <p>2024年に韓国から来られたお客様を歌で歓迎するなど、音楽を通じた国際交流にも積極的に参加。歌は国境を越えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VIDEOS ========== -->
+<section id="videos" class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">VIDEOS</span>
+      <h2 class="section-title">活動動画</h2>
+      <p class="section-desc">これまでの出演・活動の記録をご覧ください</p>
+    </div>
+    <div class="vid-grid">
+
+<a class="vid-card" href="https://www.youtube.com/watch?v=YUuvhveCyEo" target="_blank">
+        <div class="vid-thumb">
+          <img src="https://img.youtube.com/vi/YUuvhveCyEo/hqdefault.jpg" alt="菜の花の思い出2026" loading="lazy">
+          <div class="vid-play"><svg width="20" height="20" viewBox="0 0 20 20"><polygon points="5,3 18,10 5,17" fill="white"/></svg></div>
+        </div>
+        <div class="vid-info">
+          <span class="vid-tag">🌸 入卒団式</span>
+          <h3>菜の花の思い出2026</h3>
+          <p>2026年3月22日 ｜ 入卒団式 記念映像 ｜ 世界女性会館</p>
+        </div>
+      </a>
+
+      <a class="vid-card" href="https://www.youtube.com/watch?v=0bdxdVtb_N0" target="_blank">
+        <div class="vid-thumb">
+          <img src="https://img.youtube.com/vi/0bdxdVtb_N0/hqdefault.jpg" alt="未来の地図" loading="lazy">
+          <div class="vid-play"><svg width="20" height="20" viewBox="0 0 20 20"><polygon points="5,3 18,10 5,17" fill="white"/></svg></div>
+        </div>
+        <div class="vid-info">
+          <span class="vid-tag">🎤 ホール出演</span>
+          <h3>未来の地図 〜Step Forward〜</h3>
+          <p>2024年1月21日 ｜ 九州総会 ｜ 九州池田講堂</p>
+        </div>
+      </a>
+
+      <a class="vid-card" href="https://www.youtube.com/watch?v=FjcoNPfbHA0" target="_blank">
+        <div class="vid-thumb">
+          <img src="https://img.youtube.com/vi/FjcoNPfbHA0/hqdefault.jpg" alt="BeBrave!" loading="lazy">
+          <div class="vid-play"><svg width="20" height="20" viewBox="0 0 20 20"><polygon points="5,3 18,10 5,17" fill="white"/></svg></div>
+        </div>
+        <div class="vid-info">
+          <span class="vid-tag">🎊 フェスタ</span>
+          <h3>BeBrave!</h3>
+          <p>2023年7月30日 ｜ 福岡総県未来部フェスタ ｜ コロナ後初出動</p>
+        </div>
+      </a>
+
+      <a class="vid-card" href="https://www.youtube.com/watch?v=NnscUiJMKdo" target="_blank">
+        <div class="vid-thumb">
+          <img src="https://img.youtube.com/vi/NnscUiJMKdo/hqdefault.jpg" alt="韓国来訪団歓迎" loading="lazy">
+          <div class="vid-play"><svg width="20" height="20" viewBox="0 0 20 20"><polygon points="5,3 18,10 5,17" fill="white"/></svg></div>
+        </div>
+        <div class="vid-info">
+          <span class="vid-tag">🤝 国際交流</span>
+          <h3>菜の花メッセージ〜韓国来訪団歓迎〜</h3>
+          <p>2024年5月17日 ｜ 韓国から来られたお客様を歓迎 ｜ 国際交流</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section id="gallery" class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">GALLERY</span>
+      <h2 class="section-title">フォトギャラリー</h2>
+      <p class="section-desc">2022年から現在まで、活動の思い出を写真で振り返ります</p>
+    </div>
+    <div class="gallery-grid">
+
+      <a class="album-card" href="https://photos.google.com/share/AF1QipM953B3sjYznLrp-5CLAg0kUygu-L8h9A9JIcpcgsocmlcgExEdf6WsRbF06INqkQ?key=Tk5jV2lxanBDYUltQkZMb2h4UmpsNlhyR09oNW53" target="_blank">
+        <div class="album-bg" style="background:linear-gradient(135deg,#F9E042,#F57C00)">
+          <span class="album-emoji">🌸</span>
+        </div>
+        <div class="album-overlay">
+          <div class="album-title">2026年 入卒団式</div>
+          <div class="album-count">83枚 ｜ 2026年3月22日</div>
+        </div>
+      </a>
+
+      <a class="album-card" href="https://photos.google.com/share/AF1QipP6ewTwEF3BCnipilfo5Pp1zNbbfyt02sE1SRabRSUZMjIPS3UYrQ6bwTO5Jd_RLw?key=X0wzcl9WVDNBWXlaajdvblVCcmx5enY5NDdWUktn" target="_blank">
+        <div class="album-bg" style="background:linear-gradient(135deg,#AB47BC,#5C6BC0)">
+          <span class="album-emoji">🎄</span>
+        </div>
+        <div class="album-overlay">
+          <div class="album-title">2025年 師弟発表会</div>
+          <div class="album-count">97枚 ｜ 2025年12月21日</div>
+        </div>
+      </a>
+
+      <a class="album-card" href="https://photos.google.com/share/AF1QipOQa1o3tYMiQd1KJZiJXgtHk_JQf9mWND8KpK5Y1KhcG7EQNK7WJzXQMTJKoT0Q9A?key=UXVyVFQtNFdEeWJxTko1eENWeHc1TUZLdVpCVFRR" target="_blank">
+        <div class="album-bg" style="background:linear-gradient(135deg,#26C6DA,#1565C0)">
+          <span class="album-emoji">🌏</span>
+        </div>
+        <div class="album-overlay">
+          <div class="album-title">Asia Peace Festa 2025</div>
+          <div class="album-count">53枚 ｜ 2025年11月23日</div>
+        </div>
+      </a>
+
+      <a class="album-card" href="https://photos.google.com/share/AF1QipNzTQZ7_8evrzkkqS-X0BuofQT4C6_8EVR8okkw10YfAKPcA5v4t9ZGqJibJGtsSg?key=SUViZW1oaHFGbU5hMzZpVTQzN2J5MUpoUVhrTFRR" target="_blank">
+        <div class="album-bg" style="background:linear-gradient(135deg,#66BB6A,#1B5E20)">
+          <span class="album-emoji">🎤</span>
+        </div>
+        <div class="album-overlay">
+          <div class="album-title">2025年11月 練習会</div>
+          <div class="album-count">73枚 ｜ 2025年11月30日</div>
+        </div>
+      </a>
+
+      <a class="album-card" href="https://photos.google.com/share/AF1QipMq7ONj1YPcOrcCceixEiM057sNwpu3znDfmRHN26bOrAq5c0o3sLRoKmuPaCfZ8g?key=Qy1kMFpjSlNweEhLQjVMUndiTW5TMS1zak5tMjBR" target="_blank">
+        <div class="album-bg" style="background:linear-gradient(135deg,#EF5350,#880E4F)">
+          <span class="album-emoji">⭐</span>
+        </div>
+        <div class="album-overlay">
+          <div class="album-title">2024年 師弟発表会</div>
+          <div class="album-count">118枚 ｜ 2024年12月22日</div>
+        </div>
+      </a>
+
+      <a class="album-card" href="https://photos.google.com/share/AF1QipOkNysZwHed8z28Ur0U94Muq9sYHR4PEkvhhWgYN9Llu46plY-0ybmvR_kmhDsRDQ?key=bUNGZ1hXU0lhSlVTcll2N25HX18tdmtCOGgwbFVn" target="_blank">
+        <div class="album-bg" style="background:linear-gradient(135deg,#FFA726,#E65100)">
+          <span class="album-emoji">🎵</span>
+        </div>
+        <div class="album-overlay">
+          <div class="album-title">2024年11月 練習会</div>
+          <div class="album-count">63枚 ｜ 2024年11月17日</div>
+        </div>
+      </a>
+
+      <a class="album-card" href="https://photos.google.com/share/AF1QipMsqASEOmZVSuA99q3QAERvysCXLhRh3sHRWyuuebDpQgzk_s8NxI-h1OmwJfiKow?key=VGVIR1ByaXk4aXltbUFqcDBYZlF6SXcyMVg5U1FB" target="_blank">
+        <div class="album-bg" style="background:linear-gradient(135deg,#26A69A,#004D40)">
+          <span class="album-emoji">🌸</span>
+        </div>
+        <div class="album-overlay">
+          <div class="album-title">2024年 入卒団式</div>
+          <div class="album-count">17枚 ｜ 2024年3月17日</div>
+        </div>
+      </a>
+
+      <a class="album-card" href="https://photos.google.com/share/AF1QipPyT21MpZqGOTmulPkCTnt1_1Piva0BDv7EjYIqBikCUK_o7OtCqhzlk1eU5G5kXg?key=dmt0T2pNamhUVWRTeDJ3eG4wbURCbTJ3ejVfWndR" target="_blank">
+        <div class="album-bg" style="background:linear-gradient(135deg,#F5C518,#2E7D32)">
+          <span class="album-emoji">🎊</span>
+        </div>
+        <div class="album-overlay">
+          <div class="album-title">2023年 福岡総県フェスタ</div>
+          <div class="album-count">10枚 ｜ 2023年7月30日</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== TIMELINE ========== -->
+<section id="news" class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">HISTORY</span>
+      <h2 class="section-title">活動記録</h2>
+      <p class="section-desc">これまでの主な活動の歩みをご紹介します</p>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2026年3月22日</div>
+        <div class="tl-title">🌸 入卒団式（世界女性会館）</div>
+        <div class="tl-desc">2025年度の入卒団式を世界女性会館にて開催。卒団生への感謝と新入団員の歓迎を込めた記念映像「菜の花の思い出2026」を制作。83枚の写真に思い出を残す。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2025年11月23日</div>
+        <div class="tl-title">🏟 Asia Peace Festa 2025（PayPayドーム福岡）</div>
+        <div class="tl-desc">九州最大の舞台、PayPayドーム福岡での「Asia Peace Festa 2025」に出演。「平和のうた」を全力で熱唱し、会場を感動で包んだ。53枚の写真が残る感動の舞台。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024年12月22日</div>
+        <div class="tl-title">⭐ 師弟発表会</div>
+        <div class="tl-desc">年末恒例の師弟発表会を開催。118枚もの写真に残る充実した舞台となり、一年の成果を発揮した。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024年5月17日</div>
+        <div class="tl-title">🤝 韓国来訪団歓迎 国際交流</div>
+        <div class="tl-desc">韓国から来られた方々を歌で歓迎。菜の花メッセージを通じて心の交流を深め、音楽が国境を越える感動の場となった。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024年1月21日</div>
+        <div class="tl-title">🎤 九州総会 出演（九州池田講堂）</div>
+        <div class="tl-desc">九州池田講堂での九州総会に出演。「未来の地図 〜Step Forward〜」を堂々と披露し、大きな拍手を受けた。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2023年12月24日</div>
+        <div class="tl-title">🎄 師弟発表会</div>
+        <div class="tl-desc">クリスマスに合わせた師弟発表会を開催。13枚の写真に残る温かな雰囲気の発表会。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2023年7月30日</div>
+        <div class="tl-title">🎊 福岡総県未来部フェスタ 出演</div>
+        <div class="tl-desc">コロナ禍明け後、初の本格的な大舞台への出動！「BeBrave!」で会場を勇気と元気で盛り上げた。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">1978年10月28日</div>
+        <div class="tl-title">🌼 結成</div>
+        <div class="tl-desc">九州菜の花少年少女合唱団が結成。以来、定例練習会・クリスマス会・入卒団式など多彩な活動を展開し、菜の花の歌声を九州から届け続けている。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== JOIN ========== -->
+<section id="join" class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">JOIN US</span>
+      <h2 class="section-title">入団のご案内</h2>
+    </div>
+    <div class="join-box">
+      <p>九州菜の花少年少女合唱団では、歌が好きな少年少女を随時募集しています。<br>音楽経験は問いません。仲間と一緒に、歌の喜びと感動を分かち合いましょう！</p>
+      <div class="join-table">
+        <table>
+          <tr>
+            <td>対　象</td>
+            <td>福岡都市圏（福岡総県・博多総県・筑紫総県）在住の小学3年生〜小学6年生</td>
+          </tr>
+          <tr>
+            <td>練習日</td>
+            <td>月1〜2回（詳細はお問い合わせください）</td>
+          </tr>
+          <tr>
+            <td>活動地域</td>
+            <td>福岡を中心に九州各地</td>
+          </tr>
+          <tr>
+            <td>経験</td>
+            <td>不問（歌が好きな方ならどなたでも）</td>
+          </tr>
+          <tr>
+            <td>お問い合わせ</td>
+            <td><a href="mailto:knhg1028@gmail.com" style="color:var(--green);font-weight:700">knhg1028@gmail.com</a></td>
+          </tr>
+        </table>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9c3KdMYwOUXaXo9X2C38zIfZbRfGZJZ0aAD7gKQ21vZkdCQ/viewform?usp=header" target="_blank" class="btn btn-dark">📝 入団試験申込書（Googleフォーム）</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-logo">🌼 九州菜の花少年少女合唱団</div>
+  <div class="footer-links">
+    <a href="#about">団について</a>
+    <a href="#activities">活動内容</a>
+    <a href="#videos">活動動画</a>
+    <a href="#gallery">フォト</a>
+    <a href="#news">活動記録</a>
+    <a href="#join">入団案内</a>
+  </div>
+  <p>© 2026 九州菜の花少年少女合唱団 All Rights Reserved.</p>
+</footer>
+
+<script>
+  // ハンバーガーメニュー
+  function toggleMenu(){
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  // メニュー以外クリックで閉じる
+  document.addEventListener('click', e=>{
+    if(!e.target.closest('#nav')) document.getElementById('navLinks').classList.remove('open');
+  });
+
+  // スムーズスクロール
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const href = a.getAttribute('href');
+      if(href.length > 1){
+        e.preventDefault();
+        const el = document.querySelector(href);
+        if(el) el.scrollIntoView({behavior:'smooth'});
+        document.getElementById('navLinks').classList.remove('open');
+      }
+    });
+  });
+
+  // ナビ スクロール強調
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', ()=>{
+    nav.style.boxShadow = window.scrollY > 60
+      ? '0 4px 28px rgba(0,0,0,.14)'
+      : '0 2px 24px rgba(0,0,0,.08)';
+  });
+
+  // フェードインアニメーション
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.opacity='1';
+        e.target.style.transform='translateY(0)';
+      }
+    });
+  },{threshold:0.1});
+
+  document.querySelectorAll('.act-card,.vid-card,.album-card,.tl-item,.stat-card').forEach(el=>{
+    el.style.cssText += 'opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
