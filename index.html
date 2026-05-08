@@ -149,6 +149,50 @@
       background:rgba(245,197,24,.2);color:var(--yellow);
     }
 
+    /* ========== SCHEDULE ========== */
+    #schedule{background:#fff;padding:2.8rem 2.5rem}
+    .schedule-inner{max-width:900px;margin:0 auto}
+    .schedule-heading{
+      text-align:center;font-size:.75rem;font-weight:700;letter-spacing:.15em;
+      color:var(--green);text-transform:uppercase;margin-bottom:1.4rem;
+    }
+    .schedule-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+    .schedule-card{
+      border-radius:20px;overflow:hidden;
+      box-shadow:0 4px 20px rgba(0,0,0,.08);
+    }
+    .schedule-card-top{
+      padding:1.4rem 1.6rem 1rem;
+      display:flex;align-items:center;gap:1rem;
+    }
+    .schedule-card:nth-child(1) .schedule-card-top{background:linear-gradient(135deg,#F9E042,#F57C00)}
+    .schedule-card:nth-child(2) .schedule-card-top{background:linear-gradient(135deg,#26C6DA,#1565C0)}
+    .schedule-date-box{
+      background:rgba(255,255,255,.35);
+      border-radius:12px;padding:.5rem .9rem;text-align:center;flex-shrink:0;
+    }
+    .schedule-month{font-size:.7rem;font-weight:700;color:rgba(0,0,0,.55)}
+    .schedule-day{font-size:2rem;font-weight:900;line-height:1;color:#1C1C1C}
+    .schedule-card:nth-child(2) .schedule-month,
+    .schedule-card:nth-child(2) .schedule-day{color:#fff}
+    .schedule-card:nth-child(2) .schedule-date-box{background:rgba(255,255,255,.2)}
+    .schedule-event-name{font-size:1rem;font-weight:800;color:#1C1C1C;line-height:1.4}
+    .schedule-card:nth-child(2) .schedule-event-name{color:#fff}
+    .schedule-card-bottom{
+      background:#fff;padding:.9rem 1.6rem 1.2rem;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .schedule-year{font-size:.8rem;color:var(--text-light)}
+    .schedule-countdown{
+      font-size:.82rem;font-weight:700;
+      background:var(--yellow-light);color:var(--green);
+      padding:.3rem .9rem;border-radius:20px;
+    }
+    @media(max-width:600px){
+      .schedule-grid{grid-template-columns:1fr}
+      #schedule{padding:2rem 1.2rem}
+    }
+
     /* ========== MOTTO ========== */
     .motto-box{
       margin-top:2.8rem;
@@ -370,6 +414,44 @@
     <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#ffffff"/>
   </svg>
 </section>
+
+<!-- ========== SCHEDULE ========== -->
+<div id="schedule">
+  <div class="schedule-inner">
+    <div class="schedule-heading">🎤 今後の出演予定</div>
+    <div class="schedule-grid">
+
+      <div class="schedule-card">
+        <div class="schedule-card-top">
+          <div class="schedule-date-box">
+            <div class="schedule-month">6月</div>
+            <div class="schedule-day">21</div>
+          </div>
+          <div class="schedule-event-name">🌸 SOKAファミリー<br>音楽祭</div>
+        </div>
+        <div class="schedule-card-bottom">
+          <span class="schedule-year">2026年6月21日</span>
+          <span class="schedule-countdown" id="cd-0621">計算中…</span>
+        </div>
+      </div>
+
+      <div class="schedule-card">
+        <div class="schedule-card-top">
+          <div class="schedule-date-box">
+            <div class="schedule-month">7月</div>
+            <div class="schedule-day">25</div>
+          </div>
+          <div class="schedule-event-name">🌏 日中音楽<br>交流大会</div>
+        </div>
+        <div class="schedule-card-bottom">
+          <span class="schedule-year">2026年7月25日</span>
+          <span class="schedule-countdown" id="cd-0725">計算中…</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- ========== ABOUT ========== -->
 <section id="about" class="section">
@@ -992,6 +1074,25 @@
     el.style.cssText += 'opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease';
     observer.observe(el);
   });
+
+  // カウントダウン
+  function updateCountdown(){
+    const now = new Date();
+    const events = [
+      {id:'cd-0621', date: new Date('2026-06-21')},
+      {id:'cd-0725', date: new Date('2026-07-25')},
+    ];
+    events.forEach(({id, date})=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      const diff = Math.ceil((date - now) / 86400000);
+      if(diff > 0) el.textContent = 'あと ' + diff + ' 日！';
+      else if(diff === 0) el.textContent = '🎉 今日！';
+      else el.textContent = '終了';
+    });
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
 </script>
 </body>
 </html>
