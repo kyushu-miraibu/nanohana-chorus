@@ -241,6 +241,47 @@
       .join-table td:first-child{white-space:normal;width:75px}
     }
 
+    /* ========== MEMBERS ========== */
+    #members{background:linear-gradient(135deg,#1B5E20 0%,#2E7D32 50%,#1565C0 100%)}
+    #members .section-tag{background:rgba(255,255,255,.15);color:#fff}
+    #members .section-title{color:#fff}
+    #members .section-desc{color:rgba(255,255,255,.75)}
+    .member-banner{
+      max-width:680px;margin:0 auto;
+      background:rgba(255,255,255,.08);
+      border:2px solid rgba(255,255,255,.2);
+      border-radius:24px;padding:2.8rem 2.5rem;
+      text-align:center;
+      backdrop-filter:blur(8px);
+    }
+    .member-badge{
+      display:inline-block;
+      background:var(--yellow);color:var(--dark);
+      font-size:.72rem;font-weight:900;letter-spacing:.12em;
+      padding:.35rem 1.1rem;border-radius:20px;margin-bottom:1.4rem;
+    }
+    .member-icon{font-size:4rem;margin-bottom:1rem;display:block}
+    .member-title{font-size:1.45rem;font-weight:800;color:#fff;margin-bottom:.8rem;line-height:1.4}
+    .member-desc{color:rgba(255,255,255,.75);font-size:.92rem;line-height:1.8;margin-bottom:2rem}
+    .member-features{
+      display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem;
+    }
+    .member-feat{
+      background:rgba(255,255,255,.12);color:#fff;
+      font-size:.78rem;font-weight:600;
+      padding:.4rem 1rem;border-radius:20px;
+    }
+    .btn-member{
+      display:inline-flex;align-items:center;gap:.6rem;
+      background:var(--yellow);color:var(--dark);
+      font-size:1rem;font-weight:800;
+      padding:1rem 2.5rem;border-radius:50px;
+      text-decoration:none;
+      box-shadow:0 6px 24px rgba(245,197,24,.45);
+      transition:transform .25s,box-shadow .25s;
+    }
+    .btn-member:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(245,197,24,.55)}
+
     /* ========== FOOTER ========== */
     footer{background:var(--dark);color:rgba(255,255,255,.6);text-align:center;padding:2.8rem 2rem}
     .footer-logo{font-family:'Noto Serif JP',serif;font-size:1.05rem;color:#fff;font-weight:700;margin-bottom:.5rem}
@@ -302,6 +343,7 @@
     <li><a href="#gallery">フォト</a></li>
     <li><a href="#news">活動記録</a></li>
     <li><a href="#join">入団案内</a></li>
+    <li><a href="#members" style="color:var(--green);font-weight:700">🎵 団員専用</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -859,6 +901,37 @@
   </div>
 </section>
 
+<!-- ========== MEMBERS ========== -->
+<section id="members" class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">MEMBERS ONLY</span>
+      <h2 class="section-title">団員専用ページ</h2>
+      <p class="section-desc">練習音源・パート別音源はこちらからアクセスできます</p>
+    </div>
+    <div class="member-banner">
+      <span class="member-badge">🔒 団員専用</span>
+      <span class="member-icon">🎵</span>
+      <div class="member-title">菜の花合唱団<br>練習用音源サイト</div>
+      <div class="member-desc">
+        パート別・速さ別の練習音源を収録しています。<br>
+        本番に向けて、いつでもどこでも練習しましょう！
+      </div>
+      <div class="member-features">
+        <span class="member-feat">🎤 全パート</span>
+        <span class="member-feat">🎵 ソプラノ</span>
+        <span class="member-feat">🎶 アルト</span>
+        <span class="member-feat">🐢 ゆっくり練習用</span>
+        <span class="member-feat">🎼 歌声入り</span>
+        <span class="member-feat">📅 イベントカウントダウン</span>
+      </div>
+      <a class="btn-member" href="https://dulcet-pixie-8baa40.netlify.app/" target="_blank">
+        🎵 練習サイトへ
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ========== FOOTER ========== -->
 <footer>
   <div class="footer-logo">🌼 九州菜の花少年少女合唱団</div>
@@ -869,6 +942,7 @@
     <a href="#gallery">フォト</a>
     <a href="#news">活動記録</a>
     <a href="#join">入団案内</a>
+    <a href="#members">団員専用</a>
   </div>
   <p>© 2026 九州菜の花少年少女合唱団 All Rights Reserved.</p>
 </footer>
