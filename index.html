@@ -41,12 +41,32 @@
       {
         "@type": "Event",
         "name": "SOKAファミリー音楽祭",
-        "startDate": "2026-06-21"
+        "startDate": "2026-06-21T13:00",
+        "location": {
+          "@type": "Place",
+          "name": "九州池田講堂",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "福岡市東区",
+            "streetAddress": "松田3-2-5",
+            "addressCountry": "JP"
+          }
+        }
       },
       {
         "@type": "Event",
         "name": "日中音楽交流大会",
-        "startDate": "2026-07-25"
+        "startDate": "2026-07-25T14:00",
+        "location": {
+          "@type": "Place",
+          "name": "FFGホール",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "福岡市中央区",
+            "streetAddress": "天神2-13",
+            "addressCountry": "JP"
+          }
+        }
       }
     ]
   }
@@ -228,9 +248,12 @@
     .schedule-card:nth-child(2) .schedule-event-name{color:#fff}
     .schedule-card-bottom{
       background:#fff;padding:.9rem 1.6rem 1.2rem;
-      display:flex;align-items:center;justify-content:space-between;
+      display:flex;align-items:flex-start;justify-content:space-between;gap:.8rem;
     }
-    .schedule-year{font-size:.8rem;color:var(--text-light)}
+    .schedule-info{display:flex;flex-direction:column;gap:.25rem}
+    .schedule-year{font-size:.82rem;font-weight:700;color:var(--dark)}
+    .schedule-time{font-size:.78rem;color:var(--text-light)}
+    .schedule-venue{font-size:.75rem;color:var(--text-light);line-height:1.4}
     .schedule-countdown{
       font-size:.82rem;font-weight:700;
       background:var(--yellow-light);color:var(--green);
@@ -478,7 +501,11 @@
           <div class="schedule-event-name">🌸 SOKAファミリー<br>音楽祭</div>
         </div>
         <div class="schedule-card-bottom">
-          <span class="schedule-year">2026年6月21日</span>
+          <div class="schedule-info">
+            <span class="schedule-year">2026年6月21日（日）</span>
+            <span class="schedule-time">🕐 13:00〜</span>
+            <span class="schedule-venue">📍 九州池田講堂<br>福岡市東区松田3-2-5</span>
+          </div>
           <span class="schedule-countdown" id="cd-0621">計算中…</span>
         </div>
       </div>
@@ -492,7 +519,11 @@
           <div class="schedule-event-name">🌏 日中音楽<br>交流大会</div>
         </div>
         <div class="schedule-card-bottom">
-          <span class="schedule-year">2026年7月25日</span>
+          <div class="schedule-info">
+            <span class="schedule-year">2026年7月25日（土）</span>
+            <span class="schedule-time">🕑 14:00〜</span>
+            <span class="schedule-venue">📍 FFGホール<br>福岡市中央区天神2-13</span>
+          </div>
           <span class="schedule-countdown" id="cd-0725">計算中…</span>
         </div>
       </div>
