@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -358,6 +358,32 @@
       .join-table td:first-child{white-space:normal;width:75px}
     }
 
+    /* ========== PASSWORD GATE ========== */
+.pw-box{
+  max-width:400px;margin:0 auto;
+  background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);
+  border-radius:24px;padding:2.8rem 2rem;text-align:center;
+  backdrop-filter:blur(8px);
+}
+.pw-icon{font-size:3rem;display:block;margin-bottom:1rem}
+.pw-title{font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+.pw-desc{color:rgba(255,255,255,.7);font-size:.9rem;margin-bottom:1.8rem}
+.pw-form{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+.pw-input{
+  padding:.75rem 1.2rem;border-radius:50px;border:2px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.15);color:#fff;font-size:1rem;
+  outline:none;width:200px;text-align:center;
+}
+.pw-input::placeholder{color:rgba(255,255,255,.5)}
+.pw-input:focus{border-color:var(--yellow)}
+.pw-btn{
+  padding:.75rem 1.6rem;border-radius:50px;border:none;
+  background:var(--yellow);color:var(--dark);font-weight:800;font-size:1rem;
+  cursor:pointer;transition:.2s;
+}
+.pw-btn:hover{background:var(--yellow-dark)}
+.pw-error{color:#ff8a80;font-size:.85rem;margin-top:.8rem}
+
     /* ========== MEMBERS ========== */
     #members{background:linear-gradient(135deg,#1B5E20 0%,#2E7D32 50%,#1565C0 100%)}
     #members .section-tag{background:rgba(255,255,255,.15);color:#fff}
@@ -456,8 +482,6 @@
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">団について</a></li>
     <li><a href="#activities">活動内容</a></li>
-    <li><a href="#videos">活動動画</a></li>
-    <li><a href="#gallery">フォト</a></li>
     <li><a href="#news">活動記録</a></li>
     <li><a href="#join">入団案内</a></li>
     <li><a href="#members" style="color:var(--green);font-weight:700">🎵 団員専用</a></li>
@@ -616,15 +640,168 @@
   </div>
 </section>
 
-<!-- ========== VIDEOS ========== -->
-<section id="videos" class="section">
+<!-- ========== TIMELINE ========== -->
+<section id="news" class="section">
   <div class="section-inner">
     <div class="section-head">
-      <span class="section-tag">VIDEOS</span>
-      <h2 class="section-title">活動動画</h2>
-      <p class="section-desc">これまでの出演・活動の記録をご覧ください</p>
+      <span class="section-tag">HISTORY</span>
+      <h2 class="section-title">活動記録</h2>
+      <p class="section-desc">これまでの主な活動の歩みをご紹介します</p>
     </div>
-    <div class="vid-grid">
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2026年3月22日</div>
+        <div class="tl-title">🌸 入卒団式（世界女性会館）</div>
+        <div class="tl-desc">2025年度の入卒団式を世界女性会館にて開催。卒団生への感謝と新入団員の歓迎を込めた記念映像「菜の花の思い出2026」を制作。83枚の写真に思い出を残す。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2025年11月23日</div>
+        <div class="tl-title">🏟 Asia Peace Festa 2025（PayPayドーム福岡）</div>
+        <div class="tl-desc">九州最大の舞台、PayPayドーム福岡での「Asia Peace Festa 2025」に出演。「平和のうた」を全力で熱唱し、会場を感動で包んだ。53枚の写真が残る感動の舞台。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024年12月22日</div>
+        <div class="tl-title">⭐ 師弟発表会</div>
+        <div class="tl-desc">年末恒例の師弟発表会を開催。118枚もの写真に残る充実した舞台となり、一年の成果を発揮した。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024年5月17日</div>
+        <div class="tl-title">🤝 韓国来訪団歓迎 国際交流</div>
+        <div class="tl-desc">韓国から来られた方々を歌で歓迎。菜の花メッセージを通じて心の交流を深め、音楽が国境を越える感動の場となった。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024年1月21日</div>
+        <div class="tl-title">🎤 九州総会 出演（九州池田講堂）</div>
+        <div class="tl-desc">九州池田講堂での九州総会に出演。「未来の地図 〜Step Forward〜」を堂々と披露し、大きな拍手を受けた。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2023年12月24日</div>
+        <div class="tl-title">🎄 師弟発表会</div>
+        <div class="tl-desc">クリスマスに合わせた師弟発表会を開催。13枚の写真に残る温かな雰囲気の発表会。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2023年7月30日</div>
+        <div class="tl-title">🎊 福岡総県未来部フェスタ 出演</div>
+        <div class="tl-desc">コロナ禍明け後、初の本格的な大舞台への出動！「BeBrave!」で会場を勇気と元気で盛り上げた。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">1994年11月23日</div>
+        <div class="tl-title">🎶 アジア青年平和音楽祭 出演</div>
+        <div class="tl-desc">アジア青年平和音楽祭において、池田大作先生の前で「お月さまの願い」を合唱させて頂きました。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">1983年3月30日</div>
+        <div class="tl-title">🌸 池田大作先生より命名</div>
+        <div class="tl-desc">池田大作先生に「九州菜の花少年少女合唱団」と命名していただきました。</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">1978年10月28日</div>
+        <div class="tl-title">🌼 結成</div>
+        <div class="tl-desc">九州菜の花少年少女合唱団が結成。以来、定例練習会・クリスマス会・入卒団式など多彩な活動を展開し、菜の花の歌声を九州から届け続けている。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== JOIN ========== -->
+<section id="join" class="section">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag">JOIN US</span>
+      <h2 class="section-title">入団のご案内</h2>
+    </div>
+    <div class="join-box">
+      <p>九州菜の花少年少女合唱団では、歌が好きな少年少女を随時募集しています。<br>音楽経験は問いません。仲間と一緒に、歌の喜びと感動を分かち合いましょう！</p>
+      <div class="join-table">
+        <table>
+          <tr>
+            <td>対　象</td>
+            <td>福岡都市圏（福岡総県・博多総県・筑紫総県）在住の小学3年生〜小学6年生</td>
+          </tr>
+          <tr>
+            <td>練習日</td>
+            <td>月1〜2回（詳細はお問い合わせください）</td>
+          </tr>
+          <tr>
+            <td>活動地域</td>
+            <td>福岡を中心に九州各地</td>
+          </tr>
+          <tr>
+            <td>経験</td>
+            <td>不問（歌が好きな方ならどなたでも）</td>
+          </tr>
+          <tr>
+            <td>お問い合わせ</td>
+            <td><a href="mailto:knhg1028@gmail.com" style="color:var(--green);font-weight:700">knhg1028@gmail.com</a></td>
+          </tr>
+        </table>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9c3KdMYwOUXaXo9X2C38zIfZbRfGZJZ0aAD7gKQ21vZkdCQ/viewform?usp=header" target="_blank" class="btn btn-dark">📝 入団試験申込書（Googleフォーム）</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MEMBERS ========== -->
+<section id="members" class="section" style="background:linear-gradient(135deg,#1B5E20 0%,#2E7D32 50%,#1565C0 100%)">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-tag" style="background:rgba(255,255,255,.15);color:#fff">MEMBERS ONLY</span>
+      <h2 class="section-title" style="color:#fff">団員専用ページ</h2>
+      <p class="section-desc" style="color:rgba(255,255,255,.75)">練習音源・動画・フォトギャラリーはこちら</p>
+    </div>
+
+    <!-- パスワードゲート -->
+    <div id="pw-gate">
+      <div class="pw-box">
+        <span class="pw-icon">🔒</span>
+        <div class="pw-title">団員専用エリア</div>
+        <div class="pw-desc">パスワードを入力してください</div>
+        <div class="pw-form">
+          <input type="password" id="pw-input" placeholder="パスワード" class="pw-input">
+          <button onclick="checkPw()" class="pw-btn">入る</button>
+        </div>
+        <div id="pw-error" class="pw-error" style="display:none">パスワードが違います</div>
+      </div>
+    </div>
+
+    <!-- メンバーコンテンツ（ロック解除後に表示） -->
+    <div id="member-content" style="display:none">
+
+      <!-- 練習サイト -->
+      <div style="text-align:center;margin-bottom:3rem">
+        <a class="btn-member" href="https://dulcet-pixie-8baa40.netlify.app/" target="_blank">
+          🎵 練習用音源サイトへ
+        </a>
+      </div>
+
+      <!-- 動画 -->
+      <div class="section-head" style="margin-top:1rem">
+        <span class="section-tag" style="background:rgba(245,197,24,.2);color:var(--yellow)">VIDEOS</span>
+        <h2 class="section-title" style="color:#fff">活動動画</h2>
+        <p class="section-desc" style="color:rgba(255,255,255,.55)">これまでの出演・活動の記録をご覧ください</p>
+      </div>
+      <div class="vid-grid" style="margin-bottom:4rem">
 
 <a class="vid-card" href="https://www.youtube.com/watch?v=YUuvhveCyEo" target="_blank">
         <div class="vid-thumb">
@@ -674,19 +851,15 @@
         </div>
       </a>
 
-    </div>
-  </div>
-</section>
+      </div>
 
-<!-- ========== GALLERY ========== -->
-<section id="gallery" class="section">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-tag">GALLERY</span>
-      <h2 class="section-title">フォトギャラリー</h2>
-      <p class="section-desc">2022年から現在まで、活動の思い出を写真で振り返ります</p>
-    </div>
-    <div class="gallery-grid">
+      <!-- ギャラリー -->
+      <div class="section-head">
+        <span class="section-tag" style="background:rgba(255,255,255,.15);color:#fff">GALLERY</span>
+        <h2 class="section-title" style="color:#fff">フォトギャラリー</h2>
+        <p class="section-desc" style="color:rgba(255,255,255,.55)">2022年から現在まで、活動の思い出を写真で振り返ります</p>
+      </div>
+      <div class="gallery-grid">
 
       <a class="album-card" href="https://photos.google.com/share/AF1QipM953B3sjYznLrp-5CLAg0kUygu-L8h9A9JIcpcgsocmlcgExEdf6WsRbF06INqkQ?key=Tk5jV2lxanBDYUltQkZMb2h4UmpsNlhyR09oNW53" target="_blank">
         <div class="album-bg" style="background:linear-gradient(135deg,#F9E042,#F57C00)">
@@ -938,160 +1111,9 @@
         </div>
       </a>
 
-    </div>
-  </div>
-</section>
-
-<!-- ========== TIMELINE ========== -->
-<section id="news" class="section">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-tag">HISTORY</span>
-      <h2 class="section-title">活動記録</h2>
-      <p class="section-desc">これまでの主な活動の歩みをご紹介します</p>
-    </div>
-    <div class="timeline">
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2026年3月22日</div>
-        <div class="tl-title">🌸 入卒団式（世界女性会館）</div>
-        <div class="tl-desc">2025年度の入卒団式を世界女性会館にて開催。卒団生への感謝と新入団員の歓迎を込めた記念映像「菜の花の思い出2026」を制作。83枚の写真に思い出を残す。</div>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2025年11月23日</div>
-        <div class="tl-title">🏟 Asia Peace Festa 2025（PayPayドーム福岡）</div>
-        <div class="tl-desc">九州最大の舞台、PayPayドーム福岡での「Asia Peace Festa 2025」に出演。「平和のうた」を全力で熱唱し、会場を感動で包んだ。53枚の写真が残る感動の舞台。</div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2024年12月22日</div>
-        <div class="tl-title">⭐ 師弟発表会</div>
-        <div class="tl-desc">年末恒例の師弟発表会を開催。118枚もの写真に残る充実した舞台となり、一年の成果を発揮した。</div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2024年5月17日</div>
-        <div class="tl-title">🤝 韓国来訪団歓迎 国際交流</div>
-        <div class="tl-desc">韓国から来られた方々を歌で歓迎。菜の花メッセージを通じて心の交流を深め、音楽が国境を越える感動の場となった。</div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2024年1月21日</div>
-        <div class="tl-title">🎤 九州総会 出演（九州池田講堂）</div>
-        <div class="tl-desc">九州池田講堂での九州総会に出演。「未来の地図 〜Step Forward〜」を堂々と披露し、大きな拍手を受けた。</div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2023年12月24日</div>
-        <div class="tl-title">🎄 師弟発表会</div>
-        <div class="tl-desc">クリスマスに合わせた師弟発表会を開催。13枚の写真に残る温かな雰囲気の発表会。</div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">2023年7月30日</div>
-        <div class="tl-title">🎊 福岡総県未来部フェスタ 出演</div>
-        <div class="tl-desc">コロナ禍明け後、初の本格的な大舞台への出動！「BeBrave!」で会場を勇気と元気で盛り上げた。</div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">1994年11月23日</div>
-        <div class="tl-title">🎶 アジア青年平和音楽祭 出演</div>
-        <div class="tl-desc">アジア青年平和音楽祭において、池田大作先生の前で「お月さまの願い」を合唱させて頂きました。</div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">1983年3月30日</div>
-        <div class="tl-title">🌸 池田大作先生より命名</div>
-        <div class="tl-desc">池田大作先生に「九州菜の花少年少女合唱団」と命名していただきました。</div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">1978年10月28日</div>
-        <div class="tl-title">🌼 結成</div>
-        <div class="tl-desc">九州菜の花少年少女合唱団が結成。以来、定例練習会・クリスマス会・入卒団式など多彩な活動を展開し、菜の花の歌声を九州から届け続けている。</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ========== JOIN ========== -->
-<section id="join" class="section">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-tag">JOIN US</span>
-      <h2 class="section-title">入団のご案内</h2>
-    </div>
-    <div class="join-box">
-      <p>九州菜の花少年少女合唱団では、歌が好きな少年少女を随時募集しています。<br>音楽経験は問いません。仲間と一緒に、歌の喜びと感動を分かち合いましょう！</p>
-      <div class="join-table">
-        <table>
-          <tr>
-            <td>対　象</td>
-            <td>福岡都市圏（福岡総県・博多総県・筑紫総県）在住の小学3年生〜小学6年生</td>
-          </tr>
-          <tr>
-            <td>練習日</td>
-            <td>月1〜2回（詳細はお問い合わせください）</td>
-          </tr>
-          <tr>
-            <td>活動地域</td>
-            <td>福岡を中心に九州各地</td>
-          </tr>
-          <tr>
-            <td>経験</td>
-            <td>不問（歌が好きな方ならどなたでも）</td>
-          </tr>
-          <tr>
-            <td>お問い合わせ</td>
-            <td><a href="mailto:knhg1028@gmail.com" style="color:var(--green);font-weight:700">knhg1028@gmail.com</a></td>
-          </tr>
-        </table>
-      </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9c3KdMYwOUXaXo9X2C38zIfZbRfGZJZ0aAD7gKQ21vZkdCQ/viewform?usp=header" target="_blank" class="btn btn-dark">📝 入団試験申込書（Googleフォーム）</a>
-    </div>
-  </div>
-</section>
-
-<!-- ========== MEMBERS ========== -->
-<section id="members" class="section">
-  <div class="section-inner">
-    <div class="section-head">
-      <span class="section-tag">MEMBERS ONLY</span>
-      <h2 class="section-title">団員専用ページ</h2>
-      <p class="section-desc">練習音源・パート別音源はこちらからアクセスできます</p>
-    </div>
-    <div class="member-banner">
-      <span class="member-badge">🔒 団員専用</span>
-      <span class="member-icon">🎵</span>
-      <div class="member-title">菜の花合唱団<br>練習用音源サイト</div>
-      <div class="member-desc">
-        パート別・速さ別の練習音源を収録しています。<br>
-        本番に向けて、いつでもどこでも練習しましょう！
-      </div>
-      <div class="member-features">
-        <span class="member-feat">🎤 全パート</span>
-        <span class="member-feat">🎵 ソプラノ</span>
-        <span class="member-feat">🎶 アルト</span>
-        <span class="member-feat">🐢 ゆっくり練習用</span>
-        <span class="member-feat">🎼 歌声入り</span>
-        <span class="member-feat">📅 イベントカウントダウン</span>
-      </div>
-      <a class="btn-member" href="https://dulcet-pixie-8baa40.netlify.app/" target="_blank">
-        🎵 練習サイトへ
-      </a>
-    </div>
+    </div><!-- /member-content -->
   </div>
 </section>
 
@@ -1101,8 +1123,6 @@
   <div class="footer-links">
     <a href="#about">団について</a>
     <a href="#activities">活動内容</a>
-    <a href="#videos">活動動画</a>
-    <a href="#gallery">フォト</a>
     <a href="#news">活動記録</a>
     <a href="#join">入団案内</a>
     <a href="#members">団員専用</a>
@@ -1174,6 +1194,27 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 60000);
+
+  // パスワード認証
+  function checkPw(){
+    const val = document.getElementById('pw-input').value;
+    if(val === 'nanohana'){
+      document.getElementById('pw-gate').style.display = 'none';
+      document.getElementById('member-content').style.display = 'block';
+      sessionStorage.setItem('member-auth','1');
+    } else {
+      document.getElementById('pw-error').style.display = 'block';
+      document.getElementById('pw-input').value = '';
+    }
+  }
+  document.getElementById('pw-input').addEventListener('keydown', function(e){
+    if(e.key === 'Enter') checkPw();
+  });
+  // セッション維持
+  if(sessionStorage.getItem('member-auth') === '1'){
+    document.getElementById('pw-gate').style.display = 'none';
+    document.getElementById('member-content').style.display = 'block';
+  }
 </script>
 </body>
 </html>
